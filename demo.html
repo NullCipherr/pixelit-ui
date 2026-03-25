@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixelit UI Demo | Conversor de Imagens em Pixel Art</title>
+  <meta name="description" content="Teste ao vivo o Pixelit UI para converter imagens em pixel art com controle de bloco, paleta, escala de cinza e exportação em segundos.">
+  <meta name="theme-color" content="#0e1118">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand-link" href="index.html" aria-label="Voltar para landing do Pixelit UI">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Pixelit UI</span>
+      </a>
+      <p class="eyebrow">Demo funcional</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="canvas-container" aria-labelledby="preview-title">
+      <div class="panel-head">
+        <h2 id="preview-title">Preview</h2>
+        <p>Visualização em tempo real do processamento.</p>
+      </div>
+      <canvas id="pixelitcanvas"></canvas>
+    </section>
+
+    <section class="controls-container" aria-labelledby="controls-title">
+      <div class="panel-head">
+        <h2 id="controls-title">Configurações</h2>
+        <p>Configuração rápida com navegação horizontal.</p>
+      </div>
+
+      <div class="controls-scroll">
+        <nav class="config-tabs" aria-label="Navegação das configurações">
+          <button type="button" class="config-tab is-active" data-tab="tab-upload">Entrada</button>
+          <button type="button" class="config-tab" data-tab="tab-pixel">Pixelização</button>
+          <button type="button" class="config-tab" data-tab="tab-effects">Efeitos</button>
+          <button type="button" class="config-tab" data-tab="tab-palette">Paleta</button>
+          <button type="button" class="config-tab" data-tab="tab-size">Saída</button>
+        </nav>
+
+        <div class="tab-panels">
+          <section id="tab-upload" class="tab-panel is-active" aria-label="Entrada da imagem">
+            <div class="control-group">
+              <label for="pixlInput">Imagem de Entrada</label>
+              <div class="file-picker">
+                <input type="file" id="pixlInput" class="file-input" accept="image/*">
+                <label for="pixlInput" class="file-trigger">Selecionar Imagem</label>
+                <span id="filename-display" class="file-name">Nenhum arquivo selecionado</span>
+              </div>
+            </div>
+          </section>
+
+          <section id="tab-pixel" class="tab-panel" aria-label="Pixelização">
+            <div class="control-group">
+              <label for="blocksize">Tamanho do Bloco: <span id="blockvalue">7</span></label>
+              <input type="range" min="2" max="25" value="7" id="blocksize">
+            </div>
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="pixelcrisp" checked>
+              <label for="pixelcrisp" class="checkbox-label">Pixels Nítidos</label>
+            </div>
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="pixelgrid">
+              <label for="pixelgrid" class="checkbox-label">Mostrar Grade de Blocos</label>
+            </div>
+          </section>
+
+          <section id="tab-effects" class="tab-panel" aria-label="Efeitos visuais">
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="greyscale">
+              <label for="greyscale" class="checkbox-label">Escala de Cinza</label>
+            </div>
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="invert">
+              <label for="invert" class="checkbox-label">Inverter Cores</label>
+            </div>
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="sepia">
+              <label for="sepia" class="checkbox-label">Tom Sépia</label>
+            </div>
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="scanlines">
+              <label for="scanlines" class="checkbox-label">Scanlines Retrô</label>
+            </div>
+            <div class="control-group">
+              <label for="brightness">Brilho: <span id="brightnessvalue">0</span></label>
+              <input type="range" min="-100" max="100" value="0" id="brightness">
+            </div>
+            <div class="control-group">
+              <label for="contrast">Contraste: <span id="contrastvalue">0</span></label>
+              <input type="range" min="-100" max="100" value="0" id="contrast">
+            </div>
+          </section>
+
+          <section id="tab-palette" class="tab-panel" aria-label="Paleta de cores">
+            <div class="control-group checkbox-group">
+              <input type="checkbox" id="palette">
+              <label for="palette" class="checkbox-label">Aplicar Paleta</label>
+            </div>
+            <div class="control-group">
+              <label for="paletteselector">Selecione a Paleta</label>
+              <select name="paletteselector" id="paletteselector">
+                <option value="">-- Selecione uma paleta --</option>
+              </select>
+              <div class="palette-display" id="palettecolor"></div>
+            </div>
+          </section>
+
+          <section id="tab-size" class="tab-panel" aria-label="Configurações de saída">
+            <div class="control-grid">
+              <div class="control-group">
+                <label for="maxheight">Altura Máxima (px)</label>
+                <input type="number" id="maxheight" placeholder="Ex: 500">
+              </div>
+              <div class="control-group">
+                <label for="maxwidth">Largura Máxima (px)</label>
+                <input type="number" id="maxwidth" placeholder="Ex: 500">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="outputformat">Formato de Arquivo</label>
+              <select id="outputformat">
+                <option value="png">PNG (qualidade máxima)</option>
+                <option value="jpeg">JPEG (arquivo leve)</option>
+                <option value="webp">WEBP (moderno)</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <button id="downloadimage" class="btn">Baixar Imagem</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <img src="img/sample.png" id="pixelitimg" alt="Imagem de Exemplo" style="display: none;">
+
+  <div class="loader" aria-live="polite" aria-label="Carregando processamento da imagem">
+    <div class="lds-spinner">
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-card">
+      <p class="footer-title">Pixelit UI Demo</p>
+      <p class="footer-subtitle">Conversor de imagens para pixel art em tempo real.</p>
+      <p class="footer-meta">
+        © <script>document.write(new Date().getFullYear())</script> · Baseado em
+        <a href="https://github.com/giventofly/pixelit">Pixelit</a> ·
+        Licença <a href="https://github.com/giventofly/pixelit?tab=MIT-1-ov-file#readme">MIT</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/pixelit.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/demo-ui.js"></script>
+</body>
+</html>

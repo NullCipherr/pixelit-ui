@@ -186,59 +186,170 @@ var px = new pixelit({
         return t;
     };
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("pixlInput").onchange = function(t) {
+    var t = document.querySelector("#blocksize"),
+        r = document.querySelector("#greyscale"),
+        n = document.querySelector("#palette"),
+        q = document.getElementById("pixelcrisp"),
+        A = document.getElementById("pixelgrid"),
+        a = document.querySelector("#maxheight"),
+        o = document.querySelector("#maxwidth"),
+        i = document.getElementById("paletteselector"),
+        l = document.getElementById("palettecolor"),
+        c = document.getElementById("invert"),
+        d = document.getElementById("sepia"),
+        s = document.getElementById("scanlines"),
+        u = document.getElementById("brightness"),
+        m = document.getElementById("contrast"),
+        f = document.getElementById("brightnessvalue"),
+        p = document.getElementById("contrastvalue"),
+        g = document.getElementById("pixelitcanvas"),
+        h = null,
+        v = document.getElementById("pixlInput"),
+        b = document.getElementById("filename-display"),
+        y = document.getElementById("outputformat"),
+        w = "pixelit-output";
+    v.onchange = function(t) {
         var r = new Image();
-        (r.src = URL.createObjectURL(this.files[0])),
+        this.files &&
+            this.files[0] &&
+            ((w = this.files[0].name.replace(/\.[^/.]+$/, "") || "pixelit-output"),
+            b && (b.textContent = this.files[0].name),
+            (r.src = URL.createObjectURL(this.files[0]))),
         (r.onload = function() {
-            px.setFromImgSource(r.src), e();
+            px.setFromImgSource(r.src), C();
         });
     };
-    var e = function() {
-        document.querySelector(".loader").classList.toggle("active"),
-            setTimeout(function() {
-                document.querySelector(".loader").classList.toggle("active");
-            }, 800),
-            px.setScale(t.value).setPalette(paletteList[currentPalette]).draw().pixelate(),
-            r.checked && px.convertGrayscale(),
-            n.checked && px.convertPalette(),
-            a.value && px.setMaxHeight(a.value).resizeImage(),
-            o.value && px.setMaxWidth(o.value).resizeImage();
-    };
-    !(function() {
-        document.querySelector("#palettecolor").innerHTML = "";
-        var e = pullFromLocalStorage();
-        (paletteList = [].concat(_toConsumableArray(paletteList), _toConsumableArray(e))).forEach(function(e, t) {
-            var r = document.createElement("option");
-            (r.value = t),
-            e.forEach(function(e) {
+    var x = function(e) {
+            if (l) {
+                l.innerHTML = "";
+                var t = paletteList[e] || [];
+                t.forEach(function(e) {
                     var t = document.createElement("div");
-                    (t.classList = "colorblock"), (t.style.backgroundColor = "rgba(".concat(e[0], ",").concat(e[1], ",").concat(e[2], ",1)")), r.appendChild(t);
-                }),
-                document.getElementById("paletteselector").appendChild(r);
-        });
-    })(),
-    new SlimSelect({
-        hideSelectedOption: !0,
-        showSearch: !1,
-        select: "#paletteselector",
-        onChange: function(t) {
-            (currentPalette = t.value), (n.checked = !0), e();
+                    (t.className = "colorblock"), (t.style.backgroundColor = "rgba(".concat(e[0], ",").concat(e[1], ",").concat(e[2], ",1)")), l.appendChild(t);
+                });
+            }
         },
-    });
-    var t = document.querySelector("#blocksize");
-    t.addEventListener("change", function(t) {
-        (document.querySelector("#blockvalue").innerText = this.value), e();
-    });
-    var r = document.querySelector("#greyscale");
-    r.addEventListener("change", e);
-    var n = document.querySelector("#palette");
-    n.addEventListener("change", e);
-    var a = document.querySelector("#maxheight");
-    a.addEventListener("change", e);
-    var o = document.querySelector("#maxwidth");
-    o.addEventListener("change", e),
-        document.querySelector("#downloadimage").addEventListener("click", function(e) {
-            px.saveImage();
+        k = function() {
+            if (g && g.getContext) {
+                var e = g.getContext("2d", {
+                        willReadFrequently: !0
+                    }),
+                    r = g.width,
+                    n = g.height;
+                if (r && n) {
+                    var a = e.getImageData(0, 0, r, n),
+                        o = a.data,
+                        i = Number(u.value || 0),
+                        l = Number(m.value || 0),
+                        f = (259 * (l + 255)) / (255 * (259 - l));
+                    for (var p = 0; p < o.length; p += 4) {
+                        var v = o[p],
+                            b = o[p + 1],
+                            y = o[p + 2];
+                        if (c.checked && ((v = 255 - v), (b = 255 - b), (y = 255 - y)), d.checked) {
+                            var w = 0.393 * v + 0.769 * b + 0.189 * y,
+                                x = 0.349 * v + 0.686 * b + 0.168 * y,
+                                k = 0.272 * v + 0.534 * b + 0.131 * y;
+                            (v = Math.min(255, w)), (b = Math.min(255, x)), (y = Math.min(255, k));
+                        }
+                        (v = Math.max(0, Math.min(255, v + i))),
+                        (b = Math.max(0, Math.min(255, b + i))),
+                        (y = Math.max(0, Math.min(255, y + i))),
+                        (v = Math.max(0, Math.min(255, f * (v - 128) + 128))),
+                        (b = Math.max(0, Math.min(255, f * (b - 128) + 128))),
+                        (y = Math.max(0, Math.min(255, f * (y - 128) + 128))),
+                        (o[p] = v),
+                        (o[p + 1] = b),
+                        (o[p + 2] = y);
+                    }
+                    if (e.putImageData(a, 0, 0), s.checked) {
+                        e.save(), (e.fillStyle = "rgba(0, 0, 0, 0.12)");
+                        for (var C = 1; C < n; C += 3) e.fillRect(0, C, r, 1);
+                        e.restore();
+                    }
+                    if (A && A.checked) {
+                        e.save(), (e.strokeStyle = "rgba(18, 23, 34, 0.2)"), (e.lineWidth = 1);
+                        for (var S = Number(t.value || 7), _ = S; _ < r; _ += S) e.beginPath(), e.moveTo(_ + 0.5, 0), e.lineTo(_ + 0.5, n), e.stroke();
+                        for (var E = S; E < n; E += S) e.beginPath(), e.moveTo(0, E + 0.5), e.lineTo(r, E + 0.5), e.stroke();
+                        e.restore();
+                    }
+                }
+            }
+        },
+        C = function() {
+            document.querySelector(".loader").classList.toggle("active"),
+                clearTimeout(h),
+                (h = setTimeout(function() {
+                    document.querySelector(".loader").classList.toggle("active");
+                }, 800)),
+                px.setScale(t.value).setPalette(paletteList[currentPalette]).draw().pixelate(),
+                r.checked && px.convertGrayscale(),
+                n.checked && px.convertPalette(),
+                a.value && px.setMaxHeight(a.value).resizeImage(),
+                o.value && px.setMaxWidth(o.value).resizeImage(),
+                q && q.checked ? ((g.style.imageRendering = "pixelated"), (g.style.webkitFontSmoothing = "none")) : (g.style.imageRendering = "auto"),
+                k();
+        },
+        S = function() {
+            if (g) {
+                var e = y && y.value ? y.value : "png",
+                    t = {
+                        png: "image/png",
+                        jpeg: "image/jpeg",
+                        webp: "image/webp",
+                    } [e] || "image/png",
+                    r = e;
+                if ("function" == typeof g.toBlob)
+                    return void g.toBlob(
+                        function(e) {
+                            if (!e) return void px.saveImage();
+                            var t = URL.createObjectURL(e),
+                                n = document.createElement("a");
+                            (n.href = t), (n.download = "".concat(w, ".").concat(r)), document.body.appendChild(n), n.click(), n.remove(), URL.revokeObjectURL(t);
+                        },
+                        t,
+                        "png" === e ? void 0 : 0.92
+                    );
+                var n = g.toDataURL(t, "png" === e ? void 0 : 0.92),
+                    a = document.createElement("a");
+                (a.href = n), (a.download = "".concat(w, ".").concat(r)), document.body.appendChild(a), a.click(), a.remove();
+            }
+        };
+    !(function() {
+        var e = pullFromLocalStorage();
+        if (paletteList = [].concat(_toConsumableArray(paletteList), _toConsumableArray(e)), i) {
+            i.innerHTML = '<option value="">-- Selecione uma paleta --</option>';
+            for (var t = 0; t < paletteList.length; t++) {
+                var r = document.createElement("option");
+                (r.value = t), (r.textContent = "Paleta ".concat(t + 1, " (").concat(paletteList[t].length, " cores)")), i.appendChild(r);
+            }
+        }
+        x(currentPalette);
+    })(),
+    i &&
+        i.addEventListener("change", function() {
+            "" !== this.value && ((currentPalette = Number(this.value)), (n.checked = !0), x(currentPalette), C());
         }),
-        e();
+    t.addEventListener("change", function(t) {
+        (document.querySelector("#blockvalue").innerText = this.value), C();
+    }),
+    r.addEventListener("change", C),
+    n.addEventListener("change", C),
+    q && q.addEventListener("change", C),
+    A && A.addEventListener("change", C),
+    a.addEventListener("change", C),
+    o.addEventListener("change", C),
+    c.addEventListener("change", C),
+    d.addEventListener("change", C),
+    s.addEventListener("change", C),
+    u.addEventListener("input", function() {
+        f.innerText = this.value, C();
+    }),
+    m.addEventListener("input", function() {
+        p.innerText = this.value, C();
+    }),
+    document.querySelector("#downloadimage").addEventListener("click", function(e) {
+        S();
+    }),
+    C();
 });

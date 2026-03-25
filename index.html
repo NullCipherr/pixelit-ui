@@ -1,114 +1,234 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <!-- Meta tags essenciais -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Conversor de Imagens em Pixel Art</title>
-  <meta name="description" content="Nossa ferramenta online gratuita converte suas fotos em pixel art, trazendo o charme nostálgico dos videogames vintage para suas imagens.">
-
-  <!-- SlimSelect CSS via CDN -->
-  <link href="css/slimselect.css" rel="stylesheet">
-
-  <!-- CSS Personalizado -->
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelit UI | Transforme imagens em pixel art em segundos</title>
+  <meta name="description" content="Pixelit UI converte fotos em pixel art com controle de paleta, escala e exportação rápida. Teste a demo agora e veja o resultado em tempo real.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Pixelit UI | Conversor de imagens para pixel art">
+  <meta property="og:description" content="Converta imagens em pixel art com qualidade, controle visual e fluxo simples.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:image" content="img/hero/Result.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0e1118">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
 
-  <!-- Cabeçalho -->
-  <header class="header">
-    <h1>Conversor de Imagens em Pixel Art</h1>
+  <header class="site-header" id="topo">
+    <div class="container nav-wrap">
+      <a href="#topo" class="brand" aria-label="Página inicial Pixelit UI">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Pixelit UI</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="menu-principal" class="main-nav" aria-label="Navegação principal">
+        <a href="#about">Produto</a>
+        <a href="#how-to-use">Como usar</a>
+        <a href="#demo">Demo</a>
+        <a href="#contato">Contato</a>
+        <a class="nav-cta" href="demo.html" target="_blank" rel="noopener">Testar agora</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Conteúdo Principal -->
-  <main class="container">
-    <!-- Canvas de Pixel Art -->
-    <div class="canvas-container">
-      <canvas id="pixelitcanvas"></canvas>
-    </div>
+  <main id="main-content">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Conversor de imagens para pixel art</p>
+          <h1 id="hero-title">Transforme qualquer foto em pixel art pronta para compartilhar.</h1>
+          <p class="hero-subtitle">
+            O Pixelit UI elimina o trabalho manual de estilização: você ajusta blocos, paleta e escala em poucos cliques e exporta o resultado final com qualidade.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="demo.html" target="_blank" rel="noopener">Abrir demo</a>
+            <a class="btn btn-ghost" href="#about">Entender o produto</a>
+          </div>
+        </div>
 
-    <!-- Controles -->
-    <div class="controls-container">
-      <h2>Configurações</h2>
+        <div class="hero-visual reveal">
+          <article class="product-card" aria-label="Prévia do produto Pixelit UI">
+            <div class="product-card-head">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="product-card-body">
+              <div class="mini-preview">
+                <img src="img/hero/Result.png" alt="Resultado visual do Pixelit UI com estilo pixel art">
+              </div>
+              <div class="mini-stats">
+                <div>
+                  <p>Bloco</p>
+                  <strong>7px</strong>
+                </div>
+                <div>
+                  <p>Paleta</p>
+                  <strong>12 opções</strong>
+                </div>
+                <div>
+                  <p>Saída</p>
+                  <strong>PNG</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <!-- Upload da Imagem -->
-      <div class="control-group">
-        <label for="pixlInput">Upload da Imagem</label>
-        <input type="file" id="pixlInput" accept="image/*">
-      </div>
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Por que existe</p>
+          <h2 id="about-title">De edição demorada para resultado visual consistente.</h2>
+          <p>
+            Criar pixel art manualmente para testes, conteúdo e protótipos costuma consumir tempo e gerar variações de estilo. O Pixelit UI centraliza esse processo em uma interface única e objetiva.
+          </p>
+        </div>
 
-      <!-- Tamanho do Bloco -->
-      <div class="control-group">
-        <label for="blocksize">Tamanho do Bloco: <span id="blockvalue">7</span></label>
-        <input type="range" min="2" max="25" value="7" id="blocksize">
+        <div class="about-grid">
+          <article class="about-card reveal">
+            <h3>Problema atual</h3>
+            <p>Ferramentas genéricas exigem múltiplas etapas, exportações quebradas e ajustes repetitivos.</p>
+          </article>
+          <article class="about-card reveal">
+            <h3>Como resolve</h3>
+            <p>Configurações de bloco, escala de cinza, paleta e dimensões ficam acessíveis no mesmo fluxo.</p>
+          </article>
+          <article class="about-card reveal">
+            <h3>Diferenciais</h3>
+            <p>Processamento visual imediato, interface leve e acesso direto à imagem final para download.</p>
+          </article>
+          <article class="about-card reveal">
+            <h3>Benefícios reais</h3>
+            <p>Economia de tempo para creators, designers e devs com resultado consistente em segundos.</p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <!-- Escala de Cinza -->
-      <div class="control-group checkbox-group">
-        <input type="checkbox" id="greyscale">
-        <label for="greyscale" class="checkbox-label">Escala de Cinza</label>
-      </div>
+    <section class="how-to-use section" id="how-to-use" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Como usar</p>
+          <h2 id="how-title">Quatro passos para sair da imagem bruta para pixel art final.</h2>
+        </div>
 
-      <!-- Paleta de Cores -->
-      <div class="control-group checkbox-group">
-        <input type="checkbox" id="palette">
-        <label for="palette" class="checkbox-label">Paleta de Cores</label>
+        <ol class="steps" aria-label="Passos para usar o Pixelit UI">
+          <li class="step reveal">
+            <span class="step-number">01</span>
+            <h3>Envie sua imagem</h3>
+            <p>Carregue um arquivo local e visualize instantaneamente no canvas principal.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">02</span>
+            <h3>Ajuste os parâmetros</h3>
+            <p>Defina tamanho do bloco, escala de cinza e dimensões máximas conforme seu objetivo.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">03</span>
+            <h3>Escolha a paleta</h3>
+            <p>Teste combinações de cores para encontrar a estética ideal do seu projeto.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">04</span>
+            <h3>Baixe e publique</h3>
+            <p>Exporte a arte final e use em posts, jogos, protótipos ou materiais de divulgação.</p>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <!-- Altura e Largura Máximas -->
-      <div class="control-group">
-        <label for="maxheight">Altura Máxima (px)</label>
-        <input type="number" id="maxheight" placeholder="Ex: 500">
-      </div>
-      <div class="control-group">
-        <label for="maxwidth">Largura Máxima (px)</label>
-        <input type="number" id="maxwidth" placeholder="Ex: 500">
-      </div>
+    <section class="demo section" id="demo" aria-labelledby="demo-title">
+      <div class="container demo-grid">
+        <div class="demo-copy reveal">
+          <p class="eyebrow">Prova concreta</p>
+          <h2 id="demo-title">A demo já está funcional e pronta para teste.</h2>
+          <p>
+            Esta não é uma proposta conceitual: o produto está operacional. Abra a demo, suba uma imagem real e veja o processamento acontecer em tempo real.
+          </p>
+          <ul class="demo-list">
+            <li>Upload de imagem com feedback visual imediato</li>
+            <li>Controle de pixelização, paleta e escala de cinza</li>
+            <li>Exportação do resultado final com um clique</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="demo.html" target="_blank" rel="noopener">Testar demo completa</a>
+            <a class="btn btn-ghost" href="https://github.com/arcosbr/pixelit-ui" target="_blank" rel="noopener">Ver repositório</a>
+          </div>
+        </div>
 
-      <!-- Seletor de Paleta -->
-      <div class="control-group">
-        <label for="paletteselector">Selecione a Paleta</label>
-        <select name="paletteselector" id="paletteselector">
-          <option value="">-- Selecione uma paleta --</option>
-        </select>
-        <!-- Contêiner para exibir as cores da paleta selecionada -->
-        <div class="palette-display" id="palettecolor"></div>
+        <div class="demo-preview reveal">
+          <div class="preview-shell">
+            <div class="preview-head">
+              <span></span><span></span><span></span>
+              <p>Pixelit UI / Demo ao vivo</p>
+            </div>
+            <iframe
+              src="demo.html"
+              title="Demo funcional do Pixelit UI"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            ></iframe>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Botão de Download -->
-      <div class="control-group">
-        <button id="downloadimage" class="btn">Baixar Imagem</button>
+    <section class="final-cta section" id="contato" aria-labelledby="cta-title">
+      <div class="container reveal">
+        <div class="cta-box">
+          <p class="eyebrow">Próximo passo</p>
+          <h2 id="cta-title">Leve suas imagens para um visual retrô com fluxo profissional.</h2>
+          <p>
+            Teste agora, valide no seu caso de uso e, se quiser evoluir para integrações ou customizações, entre em contato para uma versão sob medida.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="demo.html" target="_blank" rel="noopener">Quero testar</a>
+            <a class="btn btn-ghost" href="mailto:contato@pixelitui.dev">Falar com o time</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Imagem de Exemplo Oculta -->
-  <img src="img/sample.png" id="pixelitimg" alt="Imagem de Exemplo" style="display: none;">
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#topo" class="brand footer-brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Pixelit UI</span>
+        </a>
+        <p>Camada comercial e institucional para um produto real em produção.</p>
+      </div>
 
-  <!-- Loader -->
-  <div class="loader">
-    <div class="lds-spinner">
-      <div></div><div></div><div></div><div></div><div></div><div></div>
-      <div></div><div></div><div></div><div></div><div></div><div></div>
+      <nav aria-label="Links rápidos" class="footer-links">
+        <a href="#about">Produto</a>
+        <a href="#how-to-use">Como usar</a>
+        <a href="#demo">Demo</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="footer-meta">
+        <a href="demo.html" target="_blank" rel="noopener">Abrir demo</a>
+        <a href="https://github.com/arcosbr/pixelit-ui" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-  </div>
-
-  <!-- Rodapé -->
-  <footer class="footer">
-    &copy; <script>document.write(new Date().getFullYear())</script>
-    <a href="https://github.com/giventofly/pixelit">Pixelit</a> – Licenciado sob a <a href="https://github.com/giventofly/pixelit?tab=MIT-1-ov-file#readme">licença MIT</a>.
+    <div class="container copyright">
+      <small>© <span id="current-year"></span> Pixelit UI. Todos os direitos reservados.</small>
+    </div>
   </footer>
-
-  <!-- Scripts -->
-  <!-- SlimSelect JS -->
-  <script src="js/slim-select.js"></script>
-
-  <!-- pixelit.js e main.js -->
-  <script src="js/pixelit.min.js"></script>
-  <script src="js/main.js"></script>
-
 </body>
-
 </html>

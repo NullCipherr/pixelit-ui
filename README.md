@@ -1,64 +1,85 @@
-# Pixelit-UI
+# Pixelit UI
 
-**Pixelit-UI** is a free online tool that transforms your pictures into stunning pixel art, bringing the nostalgic charm of vintage video games to your images. With customizable settings and a variety of color palettes, Pixelit offers a user-friendly experience for creating unique pixelated artwork.
+Conversor web de imagens para pixel art, desenvolvido em HTML, CSS e JavaScript puro.
 
-## Features
+O foco principal do projeto é a **aplicação de edição e exportação** (`demo.html`), que permite transformar imagens com controle de pixelização, paleta e efeitos visuais em tempo real.
 
-- **Image Upload:** Easily upload your pictures in various formats.
-- **Customizable Block Size:** Adjust the pixel block size to achieve the desired level of detail.
-- **Grayscale Conversion:** Convert your images to grayscale for a classic pixel art look.
-- **Color Palettes:** Choose from a range of predefined color palettes or add your own custom palettes.
-- **Resize Options:** Set maximum height and width to ensure your pixel art fits your needs.
-- **Downloadable Images:** Save your pixelated creations directly to your device.
-- **Dark Mode:** Enjoy a sleek and modern dark-themed interface inspired by JetBrains Darcula and VSCode Modern Dark.
+## O que este projeto resolve
 
-## Technologies Used
+Criar pixel art manualmente para protótipos, posts, jogos e assets rápidos costuma ser demorado. O Pixelit UI reduz esse atrito com um fluxo direto:
 
-- **HTML5 & CSS3:** For the structure and styling of the application.
-- **JavaScript:** Handles image processing and interactivity.
-- **SlimSelect:** Enhances the user experience with a customizable and elegant select dropdown for color palettes.
-- **pixelit.js:** A custom library for converting images to pixel art.
+1. enviar imagem
+2. ajustar parâmetros visuais
+3. aplicar efeitos e paletas
+4. exportar no formato desejado
 
-## Installation
+## Principais funcionalidades
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/arcosbr/pixelit-ui.git
-   ```
-2. **Navigate to the Project Directory:**
-   ```bash
-   cd pixelit-ui
-   ```
-3. **Open `index.html` in Your Browser:**
-   - You can simply double-click the `index.html` file or use a local server for a better experience.
+- Upload de imagem local
+- Ajuste de tamanho de bloco (pixelização)
+- Conversão para escala de cinza
+- Aplicação de paletas de cor
+- Efeitos adicionais (inversão, sépia, scanlines, brilho e contraste)
+- Controle de dimensão de saída (largura/altura máximas)
+- Exportação em `PNG`, `JPEG` e `WEBP`
+- Visualização em tempo real no canvas
 
-## Usage
+## Estrutura do projeto
 
-1. **Upload an Image:**
-   - Click on the "Upload da Imagem" button to select and upload your photo.
-2. **Adjust Settings:**
-   - **Tamanho do Bloco:** Slide to adjust the pixel block size.
-   - **Escala de Cinza:** Toggle to convert the image to grayscale.
-   - **Paleta de Cores:** Toggle to apply a color palette to your pixel art.
-   - **Altura/Largura Máxima:** Set maximum dimensions for your pixelated image.
-3. **Select a Color Palette:**
-   - Choose from the available color palettes in the dropdown. Each palette displays a representative color block for easy selection.
-4. **Download Your Pixel Art:**
-   - Once satisfied with the settings, click on the "Baixar Imagem" button to download your pixelated image.
+```text
+.
+├── demo.html            # Aplicação principal (editor de pixel art)
+├── css/
+│   └── styles.css       # Estilos da aplicação principal
+├── js/
+│   ├── main.js          # Motor de UI + pipeline de processamento
+│   └── pixelit.min.js   # Biblioteca base de pixelização
+├── img/
+│   ├── sample.png       # Imagem padrão inicial
+│   └── hero/
+│       ├── Hero-Background.png
+│       └── Result.png
+├── index.html           # Landing institucional/comercial
+├── style.css            # Estilos da landing
+├── script.js            # Interações da landing
+├── favicon.ico
+└── README.md
+```
 
-## Contributing
+## Como executar localmente
 
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+1. Clone o repositório:
 
-## License
+```bash
+git clone https://github.com/arcosbr/pixelit-ui.git
+cd pixelit-ui
+```
 
-This project is licensed under the [MIT License](https://github.com/giventofly/pixelit/blob/main/LICENSE).
+2. Abra `demo.html` no navegador para usar a aplicação.
 
-## Acknowledgements
+Opcional:
+- abra `index.html` para visualizar a página institucional com acesso à demo.
 
-- Inspired by the pixel art styles of classic video games.
-- Thanks to [SlimSelect](https://slimselectjs.com/) for the elegant select dropdown.
-- [pixelit.js](https://github.com/giventofly/pixelit) for the image processing library.
+## Fluxo recomendado de uso
 
----
-© 2024 [Pixelit-UI](https://github.com/arcosbr/pixelit-ui) – Licensed under the [MIT License](https://github.com/giventofly/pixelit/blob/main/LICENSE).
+1. Acesse a aba **Entrada** e selecione uma imagem.
+2. Em **Pixelização**, ajuste o tamanho de bloco e visualização.
+3. Em **Efeitos** e **Paleta**, refine o estilo final.
+4. Em **Saída**, defina dimensões e formato de arquivo.
+5. Clique em **Baixar Imagem**.
+
+## Diretrizes de manutenção
+
+- Mantenha IDs dos controles estáveis em `demo.html` para não quebrar integrações com `js/main.js`.
+- Concentre regras visuais da demo em `css/styles.css`.
+- Evite dependências front-end desnecessárias para preservar leveza e portabilidade.
+- Priorize responsividade, acessibilidade básica e performance no canvas.
+
+## Landing page (contexto)
+
+A landing existe como camada de apresentação comercial, mas não substitui o objetivo técnico do projeto, que é o editor funcional de pixel art.
+
+## Licença
+
+Este projeto segue o ecossistema do Pixelit original, distribuído sob licença MIT:
+- https://github.com/giventofly/pixelit
