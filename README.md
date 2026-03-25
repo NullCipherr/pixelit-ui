@@ -1,20 +1,20 @@
 # Pixelit UI
 
-Conversor web de imagens para pixel art, desenvolvido em HTML, CSS e JavaScript puro.
+A web-based image-to-pixel-art converter built with plain HTML, CSS, and JavaScript.
 
-O foco principal do projeto é a aplicação funcional em `demo/`, com pipeline de edição e exportação em tempo real. A `landing/` funciona como camada institucional e comercial para apresentação do produto.
+The core of this repository is the functional app in `demo/`, with a real-time editing and export pipeline. The `landing/` directory is the institutional/commercial layer used to present the product.
 
-## Principais funcionalidades
+## Key features
 
-- Upload de imagem local
-- Pixelização com controle de tamanho de bloco
-- Aplicação de paletas de cor
-- Efeitos visuais (escala de cinza, inversão, sépia, scanlines, brilho, contraste)
-- Funções de pixelização (pixels nítidos e grade de blocos)
-- Controle de dimensões de saída
-- Exportação em `PNG`, `JPEG` e `WEBP`
+- Local image upload
+- Pixelation with block size control
+- Color palette application
+- Visual effects (grayscale, invert, sepia, scanlines, brightness, contrast)
+- Pixel-focused helpers (crisp pixels and block grid)
+- Output dimension controls
+- Export formats: `PNG`, `JPEG`, and `WEBP`
 
-## Estrutura do projeto
+## Project structure
 
 ```text
 .
@@ -43,58 +43,61 @@ O foco principal do projeto é a aplicação funcional em `demo/`, com pipeline 
 │   │   └── main.css
 │   └── scripts/
 │       └── main.js
-├── index.html           # Redireciona para `landing/index.html`
+├── index.html           # Redirects to `landing/index.html`
 └── README.md
 ```
 
-## Como executar localmente
+## Running locally
 
-1. Clone o repositório:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/arcosbr/pixelit-ui.git
 cd pixelit-ui
 ```
 
-2. Abra `demo/index.html` no navegador para usar o editor.
+2. Open `demo/index.html` in your browser to use the editor.
 
-Opcional:
-- abra `landing/index.html` para visualizar a página institucional com CTA para a demo.
+Optional:
+- Open `landing/index.html` to view the institutional/commercial page with CTA to the demo.
 
-## Deploy automático no GitHub Pages
+## Automatic GitHub Pages deployment
 
-O projeto já está configurado com workflow em:
+This project already includes a deployment workflow:
 - `.github/workflows/deploy-pages.yml`
 
-### Como ativar no repositório
+### How to enable it
 
-1. Vá em `Settings` → `Pages`.
-2. Em `Build and deployment`, selecione `Source: GitHub Actions`.
-3. Faça push na branch `master`.
+1. Go to `Settings` → `Pages`
+2. Under `Build and deployment`, select `Source: GitHub Actions`
+3. Push to the `master` branch
 
-### Comportamento do deploy
+### Deployment behavior
 
-- O workflow empacota `assets/`, `landing/`, `demo/` e `index.html` (redirect) em `dist/`.
-- O deploy é publicado automaticamente no GitHub Pages.
-- A URL raiz abre `landing/index.html` via redirecionamento.
+- The workflow packages `assets/`, `landing/`, `demo/`, and root `index.html` into `dist/`
+- It publishes automatically to GitHub Pages
+- The root URL redirects to `landing/index.html`
 
-## Fluxo recomendado de uso
+## Recommended usage flow
 
-1. Em **Entrada**, selecione a imagem.
-2. Em **Pixelização**, ajuste bloco e opções de render.
-3. Em **Efeitos** e **Paleta**, refine o resultado visual.
-4. Em **Saída**, configure dimensões e formato.
-5. Baixe a imagem final.
+1. In **Input**, choose an image
+2. In **Pixelation**, tune block size and pixel rendering options
+3. In **Effects** and **Palette**, refine the final look
+4. In **Output**, configure dimensions and file format
+5. Download the final image
 
-## Diretrizes de manutenção
+## Maintenance guidelines
 
-- IDs de controles da demo devem permanecer estáveis para manter integração com `demo/scripts/main.js`.
-- Estilos da demo ficam em `demo/styles/main.css`.
-- Estilos da landing ficam em `landing/styles/main.css`.
-- Imagens e ícones compartilhados devem permanecer em `assets/`.
-- Evite dependências desnecessárias para manter portabilidade e performance.
+- Keep demo control IDs stable to preserve integration with `demo/scripts/main.js`
+- Keep demo styles in `demo/styles/main.css`
+- Keep landing styles in `landing/styles/main.css`
+- Keep shared images and icons under `assets/`
+- Avoid unnecessary dependencies to preserve portability and performance
 
-## Licença
+## Contributing
 
-Este projeto utiliza o ecossistema do Pixelit original (MIT):
-- https://github.com/giventofly/pixelit
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the [MIT License](https://github.com/giventofly/pixelit/blob/main/LICENSE).
