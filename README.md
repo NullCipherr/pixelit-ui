@@ -34,12 +34,16 @@ O foco principal do projeto é a aplicação funcional em `demo/`, com pipeline 
 │       ├── main.js
 │       ├── demo-ui.js
 │       └── pixelit.min.js
+├── .github/
+│   └── workflows/
+│       └── deploy-pages.yml
 ├── landing/
 │   ├── index.html
 │   ├── styles/
 │   │   └── main.css
 │   └── scripts/
 │       └── main.js
+├── index.html           # Redireciona para `landing/index.html`
 └── README.md
 ```
 
@@ -56,6 +60,23 @@ cd pixelit-ui
 
 Opcional:
 - abra `landing/index.html` para visualizar a página institucional com CTA para a demo.
+
+## Deploy automático no GitHub Pages
+
+O projeto já está configurado com workflow em:
+- `.github/workflows/deploy-pages.yml`
+
+### Como ativar no repositório
+
+1. Vá em `Settings` → `Pages`.
+2. Em `Build and deployment`, selecione `Source: GitHub Actions`.
+3. Faça push na branch `master`.
+
+### Comportamento do deploy
+
+- O workflow empacota `assets/`, `landing/`, `demo/` e `index.html` (redirect) em `dist/`.
+- O deploy é publicado automaticamente no GitHub Pages.
+- A URL raiz abre `landing/index.html` via redirecionamento.
 
 ## Fluxo recomendado de uso
 
