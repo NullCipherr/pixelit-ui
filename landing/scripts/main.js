@@ -1,3 +1,6 @@
+// Scripts de comportamento da landing institucional.
+// Responsabilidades: menu mobile, destaque de seção ativa e animações de entrada.
+
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
 const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
@@ -5,10 +8,12 @@ const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
 const yearNode = document.getElementById("current-year");
 
+// Mantém o ano do copyright sempre atualizado sem edição manual.
 if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
 }
 
+// Controle do menu mobile com sincronização de estado ARIA.
 if (menuToggle && mainNav) {
   menuToggle.addEventListener("click", () => {
     const expanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -16,6 +21,7 @@ if (menuToggle && mainNav) {
     mainNav.classList.toggle("open");
   });
 
+  // Ao clicar em links internos, fecha o menu para reduzir fricção em telas pequenas.
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       menuToggle.setAttribute("aria-expanded", "false");
@@ -24,7 +30,7 @@ if (menuToggle && mainNav) {
   });
 }
 
-// IntersectionObserver mantém as animações leves sem escutar scroll contínuo.
+// IntersectionObserver mantém animações leves sem escutar scroll continuamente.
 const revealObserver = new IntersectionObserver(
   (entries, observer) => {
     entries.forEach((entry) => {
@@ -39,6 +45,7 @@ const revealObserver = new IntersectionObserver(
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
+// Marca o link ativo da navegação conforme a seção dominante no viewport.
 const activeSectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {

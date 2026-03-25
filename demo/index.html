@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Metadados da aplicação principal de edição. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pixelit UI Demo | Conversor de Imagens em Pixel Art</title>
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+  <!-- Header compacto da demo com retorno rápido para a landing. -->
   <header class="header">
     <div class="header-inner">
       <a class="brand-link" href="../landing/index.html" aria-label="Voltar para landing do Pixelit UI">
@@ -23,7 +25,9 @@
     </div>
   </header>
 
+  <!-- Área principal: preview do canvas + painel de controles. -->
   <main class="container">
+    <!-- Painel de visualização da saída processada em tempo real. -->
     <section class="canvas-container" aria-labelledby="preview-title">
       <div class="panel-head">
         <h2 id="preview-title">Preview</h2>
@@ -32,6 +36,7 @@
       <canvas id="pixelitcanvas"></canvas>
     </section>
 
+    <!-- Painel de configuração organizado por abas temáticas. -->
     <section class="controls-container" aria-labelledby="controls-title">
       <div class="panel-head">
         <h2 id="controls-title">Configurações</h2>
@@ -39,6 +44,7 @@
       </div>
 
       <div class="controls-scroll">
+        <!-- Navegação horizontal das categorias de configuração. -->
         <nav class="config-tabs" aria-label="Navegação das configurações">
           <button type="button" class="config-tab is-active" data-tab="tab-upload">Entrada</button>
           <button type="button" class="config-tab" data-tab="tab-pixel">Pixelização</button>
@@ -47,6 +53,7 @@
           <button type="button" class="config-tab" data-tab="tab-size">Saída</button>
         </nav>
 
+        <!-- Conteúdo dos painéis associados às abas. -->
         <div class="tab-panels">
           <section id="tab-upload" class="tab-panel is-active" aria-label="Entrada da imagem">
             <div class="control-group">
@@ -143,8 +150,10 @@
     </section>
   </main>
 
+  <!-- Imagem base inicial usada como origem do processamento. -->
   <img src="../assets/images/sample.png" id="pixelitimg" alt="Imagem de Exemplo" style="display: none;">
 
+  <!-- Loader global exibido durante operações de renderização. -->
   <div class="loader" aria-live="polite" aria-label="Carregando processamento da imagem">
     <div class="lds-spinner">
       <div></div><div></div><div></div><div></div><div></div><div></div>
@@ -152,6 +161,7 @@
     </div>
   </div>
 
+  <!-- Rodapé técnico/institucional da demo. -->
   <footer class="footer">
     <div class="footer-card">
       <p class="footer-title">Pixelit UI Demo</p>
@@ -164,6 +174,7 @@
     </div>
   </footer>
 
+  <!-- Scripts da engine de pixelização + comportamentos de interface. -->
   <script src="./scripts/pixelit.min.js"></script>
   <script src="./scripts/main.js"></script>
   <script src="./scripts/demo-ui.js"></script>

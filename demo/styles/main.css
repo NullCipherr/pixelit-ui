@@ -1,3 +1,4 @@
+/* Tokens visuais da demo (cores, sombras, raio e largura base). */
 :root {
   --bg: #f3f5f8;
   --surface: #ffffff;
@@ -14,16 +15,19 @@
   --container: 1140px;
 }
 
+/* Reset mínimo de box-model. */
 * {
   box-sizing: border-box;
 }
 
+/* Reset estrutural para ocupar viewport com layout de app. */
 html,
 body {
   margin: 0;
   padding: 0;
 }
 
+/* Base visual da aplicação (fundo, tipografia e distribuição vertical). */
 body {
   height: 100vh;
   font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
@@ -60,6 +64,7 @@ a {
   color: inherit;
 }
 
+/* Largura padrão dos três blocos estruturais da demo. */
 .header,
 .container,
 .footer {
@@ -67,6 +72,7 @@ a {
   margin-inline: auto;
 }
 
+/* Header compacto com identidade visual e baixo consumo vertical. */
 .header {
   margin-top: 0.65rem;
 }
@@ -113,6 +119,7 @@ a {
   margin-bottom: 0.2rem;
 }
 
+/* Grade principal: preview + controles em colunas. */
 .container {
   margin-top: 0.65rem;
   margin-bottom: 0.55rem;
@@ -124,6 +131,7 @@ a {
   min-height: 0;
 }
 
+/* Superfícies principais da aplicação. */
 .canvas-container,
 .controls-container {
   background: var(--surface);
@@ -167,6 +175,7 @@ a {
   background-position: 0 0, 0 10px, 10px -10px, -10px 0;
 }
 
+/* Navegação por abas das configurações. */
 .controls-scroll {
   overflow: hidden;
   min-height: 0;
@@ -206,6 +215,7 @@ a {
   border-color: transparent;
 }
 
+/* Região dos painéis (conteúdo de cada aba). */
 .tab-panels {
   flex: 1;
   min-height: 0;
@@ -237,6 +247,7 @@ a {
   overflow: visible;
 }
 
+/* Estilos base dos controles de formulário. */
 .control-group {
   margin-bottom: 0.62rem;
 }
@@ -275,6 +286,7 @@ a {
   padding-block: 0.45rem;
 }
 
+/* Upload customizado para melhor UX em relação ao input nativo. */
 .file-picker {
   display: flex;
   flex-direction: column;
@@ -410,6 +422,7 @@ a {
   border: 1px solid rgba(18, 23, 34, 0.12);
 }
 
+/* Estilo do seletor de paleta e fallback de compatibilidade visual. */
 .ss-main {
   min-height: 44px;
   border: 1px solid var(--line);
@@ -483,6 +496,7 @@ select.ss-hidden,
   color: var(--ink);
 }
 
+/* Botões de ação primária da demo. */
 .btn {
   width: 100%;
   min-height: 46px;
@@ -514,6 +528,7 @@ select.ss-hidden,
     0 0 0 4px rgba(15, 121, 255, 0.17);
 }
 
+/* Rodapé técnico institucional da aplicação. */
 .footer {
   margin-bottom: 0.6rem;
   padding-top: 0.35rem;
@@ -562,6 +577,7 @@ select.ss-hidden,
   color: var(--primary);
 }
 
+/* Overlay de carregamento para feedback durante renderizações. */
 .loader {
   display: none;
   position: fixed;
@@ -661,6 +677,7 @@ select.ss-hidden,
   animation-delay: 0s;
 }
 
+/* Animação do spinner de carregamento. */
 @keyframes lds-spinner {
   0% {
     opacity: 1;
@@ -671,6 +688,7 @@ select.ss-hidden,
   }
 }
 
+/* Quebra para tablets e telas médias. */
 @media (max-width: 1040px) {
   body {
     height: auto;
@@ -692,6 +710,7 @@ select.ss-hidden,
   }
 }
 
+/* Ajustes de legibilidade e densidade em mobile. */
 @media (max-width: 760px) {
   .header,
   .container,
@@ -716,6 +735,7 @@ select.ss-hidden,
   }
 }
 
+/* Respeita preferência de redução de movimento do sistema. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,5 +1,6 @@
 "use strict";
 
+// Helpers gerados na transpilação para compatibilidade de iteração/espalhamento.
 function _toConsumableArray(e) {
     return _arrayWithoutHoles(e) || _iterableToArray(e) || _unsupportedIterableToArray(e) || _nonIterableSpread();
 }
@@ -33,6 +34,7 @@ function _arrayLikeToArray(e, t) {
 var px = new pixelit({
         from: document.getElementById("pixelitimg")
     }),
+    // Paletas nativas disponíveis na interface.
     paletteList = [
         [
             [7, 5, 5],
@@ -169,6 +171,7 @@ var px = new pixelit({
         ],
     ],
     currentPalette = 0,
+    // Mantido para compatibilidade com possíveis extensões de paleta customizada.
     addPalette = function() {
         var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
             t = JSON.parse(localStorage.getItem("customPalettes"));
@@ -186,6 +189,7 @@ var px = new pixelit({
         return t;
     };
 document.addEventListener("DOMContentLoaded", function() {
+    // Referências de controles da UI.
     var t = document.querySelector("#blocksize"),
         r = document.querySelector("#greyscale"),
         n = document.querySelector("#palette"),
@@ -208,6 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
         b = document.getElementById("filename-display"),
         y = document.getElementById("outputformat"),
         w = "pixelit-output";
+    // Upload: atualiza fonte de imagem e nome exibido ao usuário.
     v.onchange = function(t) {
         var r = new Image();
         this.files &&
@@ -219,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
             px.setFromImgSource(r.src), C();
         });
     };
+    // Renderiza mini preview de cores da paleta selecionada.
     var x = function(e) {
             if (l) {
                 l.innerHTML = "";
@@ -229,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
         },
+        // Pós-processamento no canvas (efeitos avançados e overlays de leitura).
         k = function() {
             if (g && g.getContext) {
                 var e = g.getContext("2d", {
@@ -276,6 +283,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         },
+        // Pipeline principal: pixelização base + efeitos + ajustes de saída.
         C = function() {
             document.querySelector(".loader").classList.toggle("active"),
                 clearTimeout(h),
@@ -290,6 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 q && q.checked ? ((g.style.imageRendering = "pixelated"), (g.style.webkitFontSmoothing = "none")) : (g.style.imageRendering = "auto"),
                 k();
         },
+        // Exporta usando o formato definido em "Saída" (PNG, JPEG ou WEBP).
         S = function() {
             if (g) {
                 var e = y && y.value ? y.value : "png",
@@ -315,6 +324,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 (a.href = n), (a.download = "".concat(w, ".").concat(r)), document.body.appendChild(a), a.click(), a.remove();
             }
         };
+    // Inicializa o seletor nativo de paletas com dados locais + padrão.
     !(function() {
         var e = pullFromLocalStorage();
         if (paletteList = [].concat(_toConsumableArray(paletteList), _toConsumableArray(e)), i) {
@@ -330,6 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
         i.addEventListener("change", function() {
             "" !== this.value && ((currentPalette = Number(this.value)), (n.checked = !0), x(currentPalette), C());
         }),
+    // Vincula todos os controles ao pipeline principal para feedback em tempo real.
     t.addEventListener("change", function(t) {
         (document.querySelector("#blockvalue").innerText = this.value), C();
     }),
