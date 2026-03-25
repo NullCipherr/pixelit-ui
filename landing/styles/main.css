@@ -179,7 +179,7 @@ p {
   overflow: hidden;
   background-image:
     linear-gradient(110deg, rgba(243, 245, 248, 0.95) 0%, rgba(243, 245, 248, 0.88) 45%, rgba(243, 245, 248, 0.76) 100%),
-    url("img/hero/Hero-Background.png");
+    url("../../assets/images/hero/Hero-Background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

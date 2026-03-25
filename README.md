@@ -2,47 +2,44 @@
 
 Conversor web de imagens para pixel art, desenvolvido em HTML, CSS e JavaScript puro.
 
-O foco principal do projeto é a **aplicação de edição e exportação** (`demo.html`), que permite transformar imagens com controle de pixelização, paleta e efeitos visuais em tempo real.
-
-## O que este projeto resolve
-
-Criar pixel art manualmente para protótipos, posts, jogos e assets rápidos costuma ser demorado. O Pixelit UI reduz esse atrito com um fluxo direto:
-
-1. enviar imagem
-2. ajustar parâmetros visuais
-3. aplicar efeitos e paletas
-4. exportar no formato desejado
+O foco principal do projeto é a aplicação funcional em `demo/`, com pipeline de edição e exportação em tempo real. A `landing/` funciona como camada institucional e comercial para apresentação do produto.
 
 ## Principais funcionalidades
 
 - Upload de imagem local
-- Ajuste de tamanho de bloco (pixelização)
-- Conversão para escala de cinza
+- Pixelização com controle de tamanho de bloco
 - Aplicação de paletas de cor
-- Efeitos adicionais (inversão, sépia, scanlines, brilho e contraste)
-- Controle de dimensão de saída (largura/altura máximas)
+- Efeitos visuais (escala de cinza, inversão, sépia, scanlines, brilho, contraste)
+- Funções de pixelização (pixels nítidos e grade de blocos)
+- Controle de dimensões de saída
 - Exportação em `PNG`, `JPEG` e `WEBP`
-- Visualização em tempo real no canvas
 
 ## Estrutura do projeto
 
 ```text
 .
-├── demo.html            # Aplicação principal (editor de pixel art)
-├── css/
-│   └── styles.css       # Estilos da aplicação principal
-├── js/
-│   ├── main.js          # Motor de UI + pipeline de processamento
-│   └── pixelit.min.js   # Biblioteca base de pixelização
-├── img/
-│   ├── sample.png       # Imagem padrão inicial
-│   └── hero/
-│       ├── Hero-Background.png
-│       └── Result.png
-├── index.html           # Landing institucional/comercial
-├── style.css            # Estilos da landing
-├── script.js            # Interações da landing
-├── favicon.ico
+├── assets/
+│   ├── icons/
+│   │   └── favicon.ico
+│   └── images/
+│       ├── sample.png
+│       └── hero/
+│           ├── Hero-Background.png
+│           └── Result.png
+├── demo/
+│   ├── index.html
+│   ├── styles/
+│   │   └── main.css
+│   └── scripts/
+│       ├── main.js
+│       ├── demo-ui.js
+│       └── pixelit.min.js
+├── landing/
+│   ├── index.html
+│   ├── styles/
+│   │   └── main.css
+│   └── scripts/
+│       └── main.js
 └── README.md
 ```
 
@@ -55,31 +52,28 @@ git clone https://github.com/arcosbr/pixelit-ui.git
 cd pixelit-ui
 ```
 
-2. Abra `demo.html` no navegador para usar a aplicação.
+2. Abra `demo/index.html` no navegador para usar o editor.
 
 Opcional:
-- abra `index.html` para visualizar a página institucional com acesso à demo.
+- abra `landing/index.html` para visualizar a página institucional com CTA para a demo.
 
 ## Fluxo recomendado de uso
 
-1. Acesse a aba **Entrada** e selecione uma imagem.
-2. Em **Pixelização**, ajuste o tamanho de bloco e visualização.
-3. Em **Efeitos** e **Paleta**, refine o estilo final.
-4. Em **Saída**, defina dimensões e formato de arquivo.
-5. Clique em **Baixar Imagem**.
+1. Em **Entrada**, selecione a imagem.
+2. Em **Pixelização**, ajuste bloco e opções de render.
+3. Em **Efeitos** e **Paleta**, refine o resultado visual.
+4. Em **Saída**, configure dimensões e formato.
+5. Baixe a imagem final.
 
 ## Diretrizes de manutenção
 
-- Mantenha IDs dos controles estáveis em `demo.html` para não quebrar integrações com `js/main.js`.
-- Concentre regras visuais da demo em `css/styles.css`.
-- Evite dependências front-end desnecessárias para preservar leveza e portabilidade.
-- Priorize responsividade, acessibilidade básica e performance no canvas.
-
-## Landing page (contexto)
-
-A landing existe como camada de apresentação comercial, mas não substitui o objetivo técnico do projeto, que é o editor funcional de pixel art.
+- IDs de controles da demo devem permanecer estáveis para manter integração com `demo/scripts/main.js`.
+- Estilos da demo ficam em `demo/styles/main.css`.
+- Estilos da landing ficam em `landing/styles/main.css`.
+- Imagens e ícones compartilhados devem permanecer em `assets/`.
+- Evite dependências desnecessárias para manter portabilidade e performance.
 
 ## Licença
 
-Este projeto segue o ecossistema do Pixelit original, distribuído sob licença MIT:
+Este projeto utiliza o ecossistema do Pixelit original (MIT):
 - https://github.com/giventofly/pixelit

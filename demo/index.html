@@ -6,15 +6,16 @@
   <title>Pixelit UI Demo | Conversor de Imagens em Pixel Art</title>
   <meta name="description" content="Teste ao vivo o Pixelit UI para converter imagens em pixel art com controle de bloco, paleta, escala de cinza e exportação em segundos.">
   <meta name="theme-color" content="#0e1118">
+  <link rel="icon" href="../assets/icons/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
   <header class="header">
     <div class="header-inner">
-      <a class="brand-link" href="index.html" aria-label="Voltar para landing do Pixelit UI">
+      <a class="brand-link" href="../landing/index.html" aria-label="Voltar para landing do Pixelit UI">
         <span class="brand-dot" aria-hidden="true"></span>
         <span>Pixelit UI</span>
       </a>
@@ -142,7 +143,7 @@
     </section>
   </main>
 
-  <img src="img/sample.png" id="pixelitimg" alt="Imagem de Exemplo" style="display: none;">
+  <img src="../assets/images/sample.png" id="pixelitimg" alt="Imagem de Exemplo" style="display: none;">
 
   <div class="loader" aria-live="polite" aria-label="Carregando processamento da imagem">
     <div class="lds-spinner">
@@ -163,8 +164,8 @@
     </div>
   </footer>
 
-  <script src="js/pixelit.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/demo-ui.js"></script>
+  <script src="./scripts/pixelit.min.js"></script>
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/demo-ui.js"></script>
 </body>
 </html>
